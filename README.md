@@ -44,18 +44,38 @@ cd web-feedback-scraper
 ## Installation
 1. Clone the repository:
 ```bash
-git clone https://github.com/katrinavassell/web-feedback-scraper.git
-cd web-feedback-scraper
+git clone https://github.com/katrinavassell/web-scraper.git
+cd web-scraper
 ```
 
 2. Install dependencies:
 ```bash
-pip install -r requirements.txt
+pip install .
 ```
 
-3. Run the application:
+3. Run the application locally:
 ```bash
 streamlit run main.py
+```
+## Push to Production
+1. Check changes
+```bash
+git status
+```
+
+2. Stage changes for commit
+```bash
+git add .
+```
+
+3. Commit Your Changes
+```bash
+git commit -m "Update Chrome extension files and deployment setup"
+```
+
+4. Push to GitHub
+```bash
+git push origin main
 ```
 
 ## Usage
