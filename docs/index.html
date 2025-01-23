@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Feedback Scraper - Data Analysis Tool</title>
+    <meta name="description" content="A powerful web scraping tool for extracting and analyzing feedback data from public feature request pages">
+    <style>
+        :root {
+            --primary-color: #6C63FF;
+            --text-color: #333;
+            --bg-color: #f5f5f5;
+            --card-bg: #fff;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        .hero {
+            background: var(--primary-color);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            margin-bottom: 1rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .feature-item {
+            padding: 1.5rem;
+            border-radius: 8px;
+            background: #f8f9fa;
+            transition: transform 0.2s;
+        }
+        .feature-item:hover {
+            transform: translateY(-5px);
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        .button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(108, 99, 255, 0.2);
+            background: #5b52e0;
+        }
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1rem 0;
+            justify-content: center;
+        }
+        .tech-badge {
+            background: #e9ecef;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+        .tech-badge:hover {
+            background: #dee2e6;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>Web Feedback Scraper</h1>
+        <p>A powerful tool to extract and analyze feedback data from public feature request pages</p>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h2>Key Features</h2>
+            <div class="features">
+                <div class="feature-item">
+                    <h3>📊 Data Extraction</h3>
+                    <p>Scrape feedback data including titles, details, and vote counts</p>
+                </div>
+                <div class="feature-item">
+                    <h3>🔍 Smart Filtering</h3>
+                    <p>Filter results by vote count and search through titles</p>
+                </div>
+                <div class="feature-item">
+                    <h3>📈 Data Export</h3>
+                    <p>Export your findings to CSV format for further analysis</p>
+                </div>
+                <div class="feature-item">
+                    <h3>⚡ Dynamic Loading</h3>
+                    <p>Handle pagination and dynamic content loading</p>
+                </div>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="https://web-feedback-scraper.katrinavassell.repl.co" class="button">Try Live Demo</a>
+                <a href="https://github.com/katrinavassell/web-feedback-scraper" class="button">View on GitHub</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Built With</h2>
+            <div class="tech-stack">
+                <span class="tech-badge">Python 3.11</span>
+                <span class="tech-badge">Streamlit</span>
+                <span class="tech-badge">BeautifulSoup4</span>
+                <span class="tech-badge">Pandas</span>
+                <span class="tech-badge">Requests</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+.collect-button {
+  margin-left: 8px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid #6C63FF;
+  background: white;
+  color: #6C63FF;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.2s;
+}
+
+.collect-button:hover {
+  background: #6C63FF;
+  color: white;
+}
+
+.collect-button:disabled {
+  background: #e0e0e0;
+  border-color: #e0e0e0;
+  color: #666;
+  cursor: not-allowed;
+}

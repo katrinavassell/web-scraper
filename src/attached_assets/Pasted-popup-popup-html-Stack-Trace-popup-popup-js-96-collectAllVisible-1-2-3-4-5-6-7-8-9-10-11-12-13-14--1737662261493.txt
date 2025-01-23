@@ -1,0 +1,222 @@
+popup/popup.html
+Stack Trace
+popup/popup.js:96 (collectAllVisible)
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+// Handle displaying and filtering posts
+let allPosts = [];
+
+// Load and display posts
+async function loadPosts() {
+  const result = await chrome.storage.local.get('collectedPosts');
+  allPosts = result.collectedPosts || [];
+  filterAndDisplayPosts();
+}
+
+// Filter and display posts based on current filters
+function filterAndDisplayPosts() {
+  const minVotes = parseInt(document.getElementById('minVotes').value) || 0;
+  const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+
+  const filteredPosts = allPosts.filter(post => {
+    return post.votes >= minVotes && 
+           post.title.toLowerCase().includes(searchTerm);
+  });
+
+  const postsList = document.getElementById('postsList');
+  postsList.innerHTML = '';
+
+  filteredPosts.forEach(post => {
+    const postElement = document.createElement('div');
+    postElement.className = 'post-item';
+
+    let changesHtml = '';
+    if (post.changes && post.changes.length > 0) {
+      changesHtml = `
+        <div class="changes">
+          Recent changes: ${post.changes.map(change => 
+            `${change.columnName} changed from "${change.originalValue}" to "${change.newValue}" on ${new Date(change.timestamp).toLocaleString()}`
+          ).join(', ')}
+        </div>
+      `;
+    }
+
+    postElement.innerHTML = `
+      <div class="post-title">${post.title}</div>
+      <div class="post-meta">
+        ${post.votes} votes · Collected on ${new Date(post.collectedAt).toLocaleDateString()}
+        <a href="${post.link}" target="_blank">View Post</a>
+      </div>
+      ${changesHtml}
+    `;
+    postsList.appendChild(postElement);
+  });
+}
+
+// Export to CSV
+function exportToCsv() {
+  const csvContent = [
+    ['Title', 'Details', 'Votes', 'Link', 'Collected At', 'Changes'],
+    ...allPosts.map(post => [
+      post.title,
+      post.details,
+      post.votes,
+      post.link,
+      post.collectedAt,
+      post.changes ? JSON.stringify(post.changes) : ''
+    ])
+  ].map(row => row.map(cell => `"${cell}"`).join(',')).join('\n');
+
+  const blob = new Blob([csvContent], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'feedback_posts.csv';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// Collect all visible posts
+async function collectAllVisible() {
+  const collectButton = document.getElementById('collectAllBtn');
+  collectButton.disabled = true;
+  collectButton.textContent = 'Collecting...';
+
+  try {
+    // Send message to content script to collect all visible posts
+    const tab = await getCurrentTab();
+    const response = await chrome.tabs.sendMessage(tab.id, { type: 'COLLECT_ALL_VISIBLE' });
+
+    if (response.success) {
+      collectButton.textContent = `Collected ${response.count} posts`;
+      setTimeout(() => {
+        collectButton.disabled = false;
+        collectButton.textContent = 'Collect All Visible';
+      }, 2000);
+
+      // Reload the posts list
+      await loadPosts();
+    }
+  } catch (error) {
+    console.error('Error collecting posts:', error);
+    collectButton.textContent = 'Error collecting';
+    setTimeout(() => {
+      collectButton.disabled = false;
+      collectButton.textContent = 'Collect All Visible';
+    }, 2000);
+  }
+}

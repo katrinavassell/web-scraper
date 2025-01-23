@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Feedback Collector</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="header">
+    <h1>Collected Feedback</h1>
+    <div class="header-buttons">
+      <button id="collectAllBtn" class="primary-button">Collect All Visible</button>
+      <button id="exportBtn">Export CSV</button>
+    </div>
+  </div>
+
+  <div class="filters">
+    <input type="number" id="minVotes" placeholder="Min votes filter">
+    <input type="text" id="searchInput" placeholder="Search titles...">
+  </div>
+
+  <div id="postsList"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

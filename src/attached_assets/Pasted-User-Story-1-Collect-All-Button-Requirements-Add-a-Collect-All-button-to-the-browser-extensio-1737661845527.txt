@@ -1,0 +1,66 @@
+User Story 1: "Collect All" Button
+Requirements:
+
+Add a "Collect All" button to the browser extension interface.
+When clicked, the button collects all posts currently visible on the screen.
+Ensure no individual clicks on posts are required.
+Implementation:
+
+UI Update:
+Add a button labeled "Collect All" to the extension's interface.
+Functionality:
+Use JavaScript to iterate over all posts currently in the viewport.
+Extract the postTitle, postDetails, count, and postLink postListItemBody for each visible post.
+Store the collected posts into the list/database.
+Add a timestamp (timestampCollected) for each collected post.
+User Story 2: Prevent Duplicates
+Requirements:
+
+Prevent duplicate posts from being added to the list.
+A post is considered unique if its postLink postListItemBody is unique.
+Implementation:
+
+Before adding a new post to the list:
+Check if the postLink postListItemBody of the new post already exists in the stored list.
+If a duplicate is detected:
+Skip adding the post to the list.
+User Story 3: Update Existing Posts
+Requirements:
+
+If a post with the same URL is collected again:
+Do not create a new record.
+Compare the new data with the stored record to check for changes.
+If there are changes:
+Update a column called "Changes" with:
+The name of the changed column(s).
+Original value(s).
+New value(s).
+Timestamp of the update.
+Implementation:
+
+Detect Changes:
+When collecting posts, check if the postLink postListItemBody already exists in the list.
+If it exists:
+Compare the postTitle, postDetails, and count fields with the existing record.
+Log Changes:
+For each changed field:
+Add an entry to the Changes column in the format:
+css
+Copy
+Edit
+[  {    columnName: 'columnName',    originalValue: 'originalValue',    newValue: 'newValue',    timestamp: 'timestamp'  },  ...]
+Update Existing Record:
+Update the post record in the list with the new values.
+Append the change log to the Changes column.
+Database Structure:
+Rows:
+
+Each row represents a collected post.
+Columns:
+
+postTitle: Title of the post.
+postDetails: Details of the post.
+count: Number of votes on the post.
+postLink postListItemBody: Unique URL of the post (used as the primary key).
+timestampCollected: The timestamp when the post was first collected.
+Changes: An array that logs any changes to the post (as detailed above).

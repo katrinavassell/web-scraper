@@ -1,0 +1,11 @@
+Metadata-Version: 2.2
+Name: repl-nix-workspace
+Version: 0.1.0
+Summary: Add your description here
+Requires-Python: >=3.11
+License-File: LICENSE
+Requires-Dist: beautifulsoup4>=4.12.3
+Requires-Dist: pandas>=2.2.3
+Requires-Dist: requests>=2.32.3
+Requires-Dist: streamlit>=1.41.1
+Requires-Dist: trafilatura>=2.0.0

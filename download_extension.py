@@ -1,0 +1,60 @@
+import streamlit as st
+import os
+import base64
+import zipfile
+from io import BytesIO
+
+def get_binary_file_downloader_html(file_path, file_label):
+    with open(file_path, 'rb') as f:
+        data = f.read()
+    b64 = base64.b64encode(data).decode()
+    return f'<a href="data:application/octet-stream;base64,{b64}" download="{os.path.basename(file_path)}">{file_label}</a>'
+
+def create_zip_file():
+    extension_files = [
+        'manifest.json',
+        'content.js',
+        'background.js',
+        'styles.css',
+        'popup/popup.html',
+        'popup/popup.css',
+        'popup/popup.js',
+        'icons/icon16.png',
+        'icons/icon48.png',
+        'icons/icon128.png',
+        'icons/icon.svg'
+    ]
+
+    memory_zip = BytesIO()
+    with zipfile.ZipFile(memory_zip, 'w', zipfile.ZIP_DEFLATED) as zf:
+        for file_path in extension_files:
+            if os.path.exists(file_path):
+                zf.write(file_path)
+            else:
+                st.error(f"Missing file: {file_path}")
+
+    return memory_zip.getvalue()
+
+def main():
+    st.title("Chrome Extension Download")
+    st.markdown("""
+    This page allows you to download the Chrome extension files.
+
+    ### Instructions:
+    1. Click the download button below to get the extension files
+    2. Extract the downloaded zip file
+    3. Open Chrome and go to `chrome://extensions/`
+    4. Enable "Developer mode" in the top right
+    5. Click "Load unpacked" and select the extracted folder
+    """)
+
+    zip_data = create_zip_file()
+    st.download_button(
+        label="Download Extension Files",
+        data=zip_data,
+        file_name="feedback-collector-extension.zip",
+        mime="application/zip"
+    )
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,84 @@
+
+Here’s a concise and clear breakdown of the requirements and implementation for the user stories, emphasizing that only the posts visible in the viewport will be collected:
+
+User Story 1: "Collect All" Button
+Requirements:
+Add a "Collect All" button to the browser extension interface.
+The button collects only posts currently visible in the viewport.
+No individual clicks on posts are required.
+Implementation:
+UI Update:
+Add a button labeled "Collect All" to the extension's popup interface.
+Functionality:
+Use JavaScript to iterate through all posts visible in the viewport.
+Extract the following details from each post:
+postTitle: Title of the post.
+postDetails: Description or details of the post.
+count: Number of votes on the post.
+postLink postListItemBody: Unique URL or identifier for the post.
+Add a timestamp (timestampCollected) for each collected post.
+Store the collected posts in the list or database.
+User Story 2: Prevent Duplicates
+Requirements:
+Prevent duplicate posts from being added to the list.
+A post is unique if its postLink postListItemBody is unique.
+Implementation:
+Before adding a post to the list:
+Check if the postLink postListItemBody already exists in the stored list.
+If a duplicate is found:
+Skip adding the post to the list.
+User Story 3: Update Existing Posts
+Requirements:
+If a post with the same URL (postLink postListItemBody) is collected again:
+Do not create a new record.
+Compare the new data (postTitle, postDetails, count) with the stored record.
+If changes are detected:
+Update the Changes column with:
+The name of the changed field(s).
+Original value(s).
+New value(s).
+A timestamp of the update.
+Implementation:
+Detect Changes:
+
+Check if the post already exists in the stored list.
+If it does, compare the postTitle, postDetails, and count fields.
+Log Changes:
+
+For each changed field:
+Add an entry to the Changes column in this format:
+json
+Copy
+Edit
+[
+  {
+    "columnName": "columnName",
+    "originalValue": "originalValue",
+    "newValue": "newValue",
+    "timestamp": "timestamp"
+  }
+]
+Update Existing Record:
+
+Update the post's data with the new values.
+Append the change log to the Changes column.
+Database Structure:
+Rows: Each row represents a collected post.
+Columns:
+postTitle: Title of the post.
+postDetails: Details or description of the post.
+count: Number of votes on the post.
+postLink postListItemBody: Unique URL (primary key).
+timestampCollected: The timestamp when the post was first collected.
+Changes: An array that logs changes to the post.
+Important Notes:
+Visibility Limitation:
+
+Only posts currently visible in the viewport will be added to the list.
+This limitation ensures efficient and focused collection of posts without loading unnecessary data.
+Duplicate Prevention:
+
+Posts with the same postLink postListItemBody will not be added twice.
+Data Accuracy:
+
+If an existing post is collected again and has updated data, it will be modified in place with a change log to track differences.
