@@ -100,11 +100,10 @@ To deploy the landing page:
 - Popup Script: Logic for the extension's popup interface.
 
 Modifying the extension:
-Interaction with webpages? → Modify content.js.
-Background processes or messaging? → Modify background.js.
-Popup behavior? → Modify popup.js.
-Permissions or file structure? → Modify manifest.json.
-
+- Interaction with webpages? → Modify content.js.
+- Background processes or messaging? → Modify background.js.
+- Popup behavior? → Modify popup.js.
+- Permissions or file structure? → Modify manifest.json.
 
 ## Usage
 1. Enter the URL of a public feedback page in the input field
