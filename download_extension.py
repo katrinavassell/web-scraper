@@ -1,14 +1,7 @@
 import streamlit as st
 import os
-import base64
 import zipfile
 from io import BytesIO
-
-def get_binary_file_downloader_html(file_path, file_label):
-    with open(file_path, 'rb') as f:
-        data = f.read()
-    b64 = base64.b64encode(data).decode()
-    return f'<a href="data:application/octet-stream;base64,{b64}" download="{os.path.basename(file_path)}">{file_label}</a>'
 
 def create_zip_file():
     extension_files = [
@@ -41,11 +34,11 @@ def main():
     This page allows you to download the Chrome extension files.
 
     ### Instructions:
-    1. Click the download button below to get the extension files
-    2. Extract the downloaded zip file
-    3. Open Chrome and go to `chrome://extensions/`
-    4. Enable "Developer mode" in the top right
-    5. Click "Load unpacked" and select the extracted folder
+    1. Click the download button below to get the extension files.
+    2. Extract the downloaded zip file.
+    3. Open Chrome and go to `chrome://extensions/`.
+    4. Enable "Developer mode" in the top right.
+    5. Click "Load unpacked" and select the extracted folder.
     """)
 
     zip_data = create_zip_file()
