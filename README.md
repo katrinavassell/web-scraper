@@ -41,7 +41,8 @@ cd web-feedback-scraper
 - Chrome Extension APIs
 - Local storage for data persistence
 
-## Installation
+## Local Installation
+
 1. Clone the repository:
 ```bash
 git clone https://github.com/katrinavassell/web-scraper.git
@@ -57,7 +58,9 @@ pip install .
 ```bash
 streamlit run main.py
 ```
-## Push to Production
+
+## Pushing Changes
+
 1. Check changes
 ```bash
 git status
@@ -78,6 +81,31 @@ git commit -m "Update Chrome extension files and deployment setup"
 git push origin main
 ```
 
+## Deploying on Streamlit
+
+To deploy the landing page:
+
+1. Go to Streamlit Community Cloud
+2. Sign in with your GitHub account.
+3. Click "New App"
+4. Select your repository
+5. Choose the branch (main) and entiry point (main.py)
+6. Deploy the app
+
+## The Extension
+
+- Manifest: Blueprint of the extension, declares its components.
+- Background Script: Event-driven backend functionality.
+- Content Script: Frontend functionality injected into webpages.
+- Popup Script: Logic for the extension's popup interface.
+
+Modifying the extension:
+Interaction with webpages? → Modify content.js.
+Background processes or messaging? → Modify background.js.
+Popup behavior? → Modify popup.js.
+Permissions or file structure? → Modify manifest.json.
+
+
 ## Usage
 1. Enter the URL of a public feedback page in the input field
 2. Wait for the scraping process to complete
@@ -85,18 +113,6 @@ git push origin main
    - Set minimum vote count
    - Search within titles
 4. Export the filtered data as CSV
-
-## GitHub Pages Setup
-
-To deploy the landing page:
-
-1. Go to repository Settings > Pages
-2. Under "Build and deployment", set:
-   - Source: "Deploy from a branch"
-   - Branch: "main"
-   - Folder: "/docs"
-3. Click Save
-4. Wait a few minutes for the site to be deployed
 
 ## Contributing
 
