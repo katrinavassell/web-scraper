@@ -31,7 +31,7 @@ def create_zip_file():
 def main():
     st.title("Chrome Extension Download")
     st.markdown("""
-    This page allows you to download the Chrome extension files.
+   This allows you to scrape any public Canny feature request board. Try with Canny's on https://feedback.canny.io/feature-requests.
 
     ### Instructions:
     1. Click the download button below to get the extension files.
