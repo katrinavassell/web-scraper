@@ -1,10 +1,10 @@
 # Web Feedback Scraper
 
-A flexible Chrome extension designed to collect and analyze feedback data from public feature request pages. This tool allows you to easily collect feedback posts while browsing and manage them through a convenient dashboard.
+A flexible Chrome extension designed to collect and analyze feedback data from public feature request pages. This tool allows you to easily collect feedback posts from any company with a public Canny feature request board. Try with Canny's own board, https://feedback.canny.io/feature-requests!
 
 ## Features
 
-- Collect feedback posts directly from the website
+- Collect feedback posts directly from a company's public feature request board on Canny
 - Filter collected posts by vote count
 - Search through collected posts by title
 - Export data to CSV format
