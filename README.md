@@ -2,6 +2,8 @@
 
 A flexible Chrome extension designed to collect and analyze feedback data from public feature request pages. This tool allows you to easily collect feedback posts while browsing and manage them through a convenient dashboard.
 
+https://web-scraper-kscnbt2abkdddcmdsvae7g.streamlit.app/
+
 ## Features
 
 - Collect feedback posts directly from the website
