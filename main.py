@@ -31,14 +31,14 @@ def create_zip_file():
 def main():
     st.title("Chrome Extension Download")
     st.markdown("""
-   This allows you to scrape any public Canny feature request board. Try with Canny's on https://feedback.canny.io/feature-requests.
-
+    This extension lets you collect data from any public Canny feature request board.
     ### Instructions:
     1. Click the download button below to get the extension files.
     2. Extract the downloaded zip file.
     3. Open Chrome and go to `chrome://extensions/`.
     4. Enable "Developer mode" in the top right.
     5. Click "Load unpacked" and select the extracted folder.
+    6. Navigate to a Canny feature request board, like https://feedback.canny.io/feature-requests, and open the extension.
     """)
 
     zip_data = create_zip_file()
