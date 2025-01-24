@@ -1,22 +1,24 @@
 # Web Feedback Scraper
 
-A flexible Chrome extension designed to collect and analyze feedback data from public feature request pages. This tool allows you to easily collect feedback posts from any company with a public Canny feature request board. Try with Canny's own board, https://feedback.canny.io/feature-requests!
-
-[Download Here](https://web-scraper-kscnbt2abkdddcmdsvae7g.streamlit.app/)
+A flexible Chrome extension designed to collect and analyze feedback data from public feature request pages. This tool allows you to easily collect feedback posts while browsing and manage them through a convenient dashboard.
 
 ## Features
 
-- Collect feedback posts directly from a company's public feature request board on Canny
+- Collect feedback posts directly from the website
 - Filter collected posts by vote count
 - Search through collected posts by title
 - Export data to CSV format
 - Clean, modern UI with responsive design
 
-## Try the Chrome Extension
+## Chrome Extension Installation
 
-Go to https://web-scraper-kscnbt2abkdddcmdsvae7g.streamlit.app/ and download the file
+1. Clone the repository:
+```bash
+git clone https://github.com/katrinavassell/web-feedback-scraper.git
+cd web-feedback-scraper
+```
 
-Load the extension in Chrome:
+2. Load the extension in Chrome:
    - Open Chrome and go to `chrome://extensions/`
    - Enable "Developer mode" in the top right
    - Click "Load unpacked"
@@ -24,8 +26,8 @@ Load the extension in Chrome:
 
 ## Usage
 
-1. Visit a feedback page (e.g., https://feedback.canny.io/feature-requests)
-2. Click the "+ Collect" button next to any post you want to save or collect all in view
+1. Visit a feedback page (e.g., feedback.canny.io)
+2. Click the "+ Collect" button next to any post you want to save
 3. Click the extension icon in Chrome to:
    - View collected posts
    - Filter by minimum votes
@@ -92,16 +94,16 @@ To deploy the landing page:
 
 ## The Extension
 
-- Manifest: Blueprint of the extension, declares its components
-- Background Script: Event-driven backend functionality
-- Content Script: Frontend functionality injected into webpages
-- Popup Script: Logic for the extension's popup interface
+- Manifest: Blueprint of the extension, declares its components.
+- Background Script: Event-driven backend functionality.
+- Content Script: Frontend functionality injected into webpages.
+- Popup Script: Logic for the extension's popup interface.
 
 Modifying the extension:
-- Interaction with webpages? → Modify content.js
-- Background processes or messaging? → Modify background.js
-- Popup behavior? → Modify popup.js
-- Permissions or file structure? → Modify manifest.json
+- Interaction with webpages? → Modify content.js.
+- Background processes or messaging? → Modify background.js.
+- Popup behavior? → Modify popup.js.
+- Permissions or file structure? → Modify manifest.json.
 
 ## Usage
 1. Enter the URL of a public feedback page in the input field
